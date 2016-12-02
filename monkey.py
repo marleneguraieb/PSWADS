@@ -1,3 +1,5 @@
+##This is a program to implement the 'random monkey' exercise in the intro to the book. 
+
 import random
 
 def generateOne(strlen):
@@ -39,15 +41,16 @@ def main():
     best = 0
     newscore = score(goalstring,newstring)
     i = 0
-    while newscore<=1:
+    while newscore<1:
         i = i + 1
-        if i%1000000 == 0 and newstring != goalstring:
+        if i%50 == 0 and newstring != goalstring:
             print(i)
         if newscore > best:
             print (newscore,newstring)
             best = newscore
         newstring = ''.join([goalstring[i] if goalstring[i] == newstring[i] else generateOne(28)[i] for i in range(len(newstring))])
         newscore = score(goalstring,newstring)
-        
-        
+#the script has one problem, if i add newscore <=1 in the while loop, then it runs forever, if i don't then it stays when it's one letter away!        
 main()
+
+print('End of monkey.py')
