@@ -45,12 +45,14 @@ def main():
         i = i + 1
         if i%50 == 0 and newstring != goalstring:
             print(i)
-        if newscore > best:
+        if newscore > best and best<1:
             print (newscore,newstring)
             best = newscore
         newstring = ''.join([goalstring[i] if goalstring[i] == newstring[i] else generateOne(28)[i] for i in range(len(newstring))])
         newscore = score(goalstring,newstring)
-#the script has one problem, if i add newscore <=1 in the while loop, then it runs forever, if i don't then it stays when it's one letter away!        
+    else:
+        print('Monkey=shakespeare:', newstring) 
+
 main()
 
 print('End of monkey.py')
